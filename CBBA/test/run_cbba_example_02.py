@@ -3,15 +3,23 @@ import time
 import json
 import matplotlib.pyplot as plt
 import pathmagic
-with pathmagic.context():
-    from CBBA import CBBA
-    from WorldInfo import WorldInfo
-    import HelperLibrary as HelperLibrary
+
+import sys   #导入sys模块
+sys.path.append("../lib")
+
+from CBBA import CBBA
+from WorldInfo import WorldInfo
+import HelperLibrary as HelperLibrary
+
+# with pathmagic.context():
+#     from CBBA import CBBA
+#     from WorldInfo import WorldInfo
+#     import HelperLibrary as HelperLibrary
 
 
 if __name__ == "__main__":
     # a json configuration file
-    config_file_name = "config_example_02.json"
+    config_file_name = "../config_example_02.json"
     # Read the configuration from the json file
     json_file = open(config_file_name)
     config_data = json.load(json_file)

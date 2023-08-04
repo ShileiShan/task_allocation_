@@ -2,14 +2,20 @@
 import time
 import json
 import matplotlib.pyplot as plt
-import pathmagic
-with pathmagic.context():
-    from CBBA import CBBA
-    from WorldInfo import WorldInfo
-    import HelperLibrary as HelperLibrary
+
+import sys
+sys.path.append("/home/shan/project/path_planning/PathPlanning/CBBA/lib")
+import logging_config
+
+
+from CBBA import CBBA
+from WorldInfo import WorldInfo
+import HelperLibrary as HelperLibrary
 
 
 if __name__ == "__main__":
+    logger = logging_config.Config().get_config()
+    logger.info("This is log")
     # a json configuration file
     config_file_name = "config_example_01.json"
     # Read the configuration from the json file
@@ -21,8 +27,8 @@ if __name__ == "__main__":
 
     # create a list of Agent(s) and Task(s)
     num_agents = 5
-    num_tasks = 10
-    max_depth = num_tasks
+    num_tasks = 13
+    max_depth = 3
     AgentList, TaskList = HelperLibrary.create_agents_and_tasks(num_agents, num_tasks, WorldInfoTest, config_data)
 
     # create a CBBA solver
@@ -53,7 +59,7 @@ if __name__ == "__main__":
     print(CBBA_solver.bid_list)
     print("winner_bid_list")
     print(CBBA_solver.winner_bid_list)
-
     # plot
     CBBA_solver.plot_assignment()
+    CBBA_solver.plot_assignment_without_timewindow()
     plt.show()

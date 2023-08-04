@@ -93,6 +93,7 @@ if __name__ == "__main__":
     # create a list of Agent(s) and Task(s)
     num_agents = 5
     num_tasks = 10
+    # 车辆的任务上限
     max_depth = num_tasks
     AgentList, TaskList = HelperLibrary.create_agents_and_tasks(num_agents, num_tasks, WorldInfoTest, config_data)
 
